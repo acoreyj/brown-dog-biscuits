@@ -1,20 +1,18 @@
 import { component$, Slot } from '@builder.io/qwik';
 import Header from '../components/header/header';
-
+import { VHElement } from '@qwikbits/utils';
 export default component$(() => {
   return (
     <>
       <main>
-        <Header />
-        <section>
-          <Slot />
-        </section>
+        <VHElement data-theme="bdb">
+          <Header />
+          <section class="px-6">
+            <Slot />
+          </section>
+        </VHElement>
       </main>
-      <footer>
-        <a href="https://www.builder.io/" target="_blank">
-          Made with ♡ by Builder.io
-        </a>
-      </footer>
+      <footer></footer>
     </>
   );
 });
