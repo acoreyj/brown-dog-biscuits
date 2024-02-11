@@ -4,10 +4,10 @@ import {
   useStylesScoped$,
   useTask$,
 } from '@builder.io/qwik';
-import { QwikLogo } from '../icons/qwik';
 import { Navbar, DaisyLink, Menu, MenuProps } from '@qwikbits/daisyui';
 import styles from './header.css?inline';
 import { useLocation } from '@builder.io/qwik-city';
+import { TwoToneHeart } from '../icons/twoToneHeart';
 
 export default component$(() => {
   useStylesScoped$(styles);
@@ -18,16 +18,16 @@ export default component$(() => {
       deep: false,
     }
   );
-  const inactiveClass = 'text-primary';
-  const activeClass =
-    'inline-block bg-gradient-to-r from-accent via-primary to-secondary from-25% via-50% to-75% bg-clip-text !text-transparent';
+  const inactiveClass = '';
+
+  const activeClass = 'underline';
   useTask$(({ track }) => {
     track(() => loc.url.pathname);
     items.menuItems = [
       {
         useQwikCityLink: true,
         href: '/',
-        class: `p-0 m-2 underline-offset-8 decoration-2 text-lg font-bold ${
+        class: `px-1 py-0 m-0 text-lg font-bold ${
           loc.url.pathname === '/' ? activeClass : inactiveClass
         }`,
         label: 'Home',
@@ -35,33 +35,45 @@ export default component$(() => {
           hover: true,
         },
       },
+      {
+        useQwikCityLink: true,
+        href: '/products',
+        class: `px-1 py-0 m-0 text-lg font-bold ${
+          loc.url.pathname === '/products' ? activeClass : inactiveClass
+        }`,
+        label: 'Products',
+        modifiers: {
+          hover: true,
+        },
+      },
     ];
   });
   return (
-    <header class=" w-full">
-      <Navbar class="bg-primary navbar">
-        <div q:slot="start">
-          <Menu variant={{ orientation: 'horizontal' }} items={items.menuItems}>
-            <li role="menuitem" q:slot="end">
-              <DaisyLink
-                href="https://github.com/genie-design/qwikbits"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="GitHub Repo"
-              >
-                <div class="icon-[lucide--github] text-3xl" />
-              </DaisyLink>
-            </li>
-          </Menu>
+    <header class="flex flex-col w-full">
+      <Navbar class="bg-secondary px-8 md:px-16 border-b border-info text-secondary-content navbar min-h[3rem]">
+        <div class="navbar-start"></div>
+        <div class="flex gap-6 navbar-center items-center">
+          <span class="text-4xl text-error">
+            <TwoToneHeart />
+          </span>
+          <span class="font-sheila_crayon text-4xl translate-y-1">
+            BROWN DOG BISCUITS
+          </span>
+          <span class="text-4xl text-error">
+            <TwoToneHeart />
+          </span>
         </div>
-        <div q:slot="center">
-          <div class="flex flex-col items-center">LOGO</div>
+
+        <div class="navbar-end flex items-center">
+          <span class="text-3xl icon-[mingcute--dog-line]" />
         </div>
-        <div q:slot="end">
-          <Menu variant={{ orientation: 'horizontal' }}>
-            <li aria-role="menuitem">END</li>
-          </Menu>
-        </div>
+      </Navbar>
+      <Navbar class="bg-accent px-8 md:px-16 text-accent-content navbar min-h-[2rem]">
+        <Menu
+          variant={{ orientation: 'horizontal' }}
+          class="p-0"
+          items={items.menuItems}
+        />
       </Navbar>
     </header>
   );

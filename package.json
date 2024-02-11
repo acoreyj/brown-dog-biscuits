@@ -11,7 +11,7 @@
   "dependencies": {
     "@iconify/json": "^2.2.180",
     "@iconify/tailwind": "^0.1.4",
-    "@qwikbits/daisyui": "^0.7.4",
+    "@qwikbits/daisyui": "^0.7.5",
     "@qwikbits/utils": "^0.7.2",
     "qwik-nx": "2.0.2"
   },
