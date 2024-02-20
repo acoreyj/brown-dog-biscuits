@@ -25,7 +25,7 @@ export default component$(() => {
           <section class="px-6">
             <Slot />
           </section>
-          <div class="flex absolute bottom-0 left-0 mt-16 bg-black p-5 flex-wrap">
+          <div class="flex mt-16 bg-black p-5 flex-wrap">
             {colors.map((color) => {
               return (
                 <div
