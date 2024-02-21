@@ -2,7 +2,7 @@ import {
   Fragment,
   QwikIntrinsicElements,
   component$,
-  useVisibleTask$,
+  useTask$,
   $,
   useStore,
 } from '@builder.io/qwik';
@@ -58,7 +58,40 @@ type AddedIcon = {
   icon: Icon;
 };
 
-export default component$(() => {
+export type BackgroundProps = {
+  xMax: number;
+  yMax: number;
+  xStart?: number;
+  yStart?: number;
+  rotations?: string[];
+  icons?: string[];
+  textColors?: string[];
+  padding?: number;
+  blank?: {
+    left: number;
+    top: number;
+    width: number;
+    height: number;
+    circle?: boolean;
+    padding?: number;
+  };
+  flippableIcons?: string[];
+};
+
+export default component$((props: BackgroundProps) => {
+  const {
+    xMax,
+    yMax,
+    xStart,
+    yStart,
+    rotations,
+    icons,
+    textColors,
+    padding,
+    blank,
+    flippableIcons,
+  } = props;
+
   const generateIconPositions = (options?: {
     xStart?: number;
     yStart?: number;
@@ -143,16 +176,22 @@ export default component$(() => {
   });
   const generatedIconPositions = generateIconPositions({
     xStart: 0,
-    yStart: 96,
-    xMax: 3840,
-    yMax: 2160,
-    padding: 16,
+    yStart: 0,
+    xMax,
+    yMax,
+    padding: padding ?? 16,
   });
   const iconConfigs = generatedIconPositions;
-  useVisibleTask$(async () => {
-    const logo = document.querySelector('.logo') as HTMLDivElement;
+  useTask$(async () => {
     try {
-      const rect = logo?.getBoundingClientRect();
+      const rect = {
+        left: 0,
+        top: 0,
+        width: 0,
+        height: 0,
+        circle: false,
+        ...blank,
+      };
       const rotateClasses = [
         'rotate-6',
         'rotate-12',
@@ -175,7 +214,7 @@ export default component$(() => {
             ' ' +
             rotateClasses[Math.floor(Math.random() * rotateClasses.length)];
         }
-        const padding = 0;
+        const padding = rect.padding ?? 0;
         const width = pos.widthAndHeight * 16;
         const circleX = rect.left + rect.width / 2;
         const circleY = rect.top + rect.height / 2;
@@ -215,10 +254,6 @@ export default component$(() => {
 
   return (
     <VHElement class="min-w-full absolute z-0 top-0 left-0 bg-transparent overflow-hidden">
-      <div
-        class="icons"
-        data-icons={JSON.stringify(generatedIconPositions)}
-      ></div>
       {state.background &&
         state.background.length &&
         state.background.map((bg, i) => {

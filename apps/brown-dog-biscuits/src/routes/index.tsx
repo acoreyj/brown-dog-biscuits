@@ -1,40 +1,33 @@
-import { component$, useStyles$ } from '@builder.io/qwik';
-import type { DocumentHead } from '@builder.io/qwik-city';
-import { Card } from '@qwikbits/daisyui';
-import Image from '../components/genie-image';
-
+import { component$, useVisibleTask$ } from '@builder.io/qwik';
+import {
+  routeLoader$,
+  type DocumentHead,
+  type RequestHandler,
+} from '@builder.io/qwik-city';
+import { VHElement, use100vh } from '@qwikbits/utils';
+import Background, { type BackgroundProps } from '../components/background';
+import Testcomp from '../components/testcomp';
+import superjson from 'superjson';
 export default component$(() => {
+  const query = useSettings();
+  const options = query.value.options;
+
+  const height = use100vh();
+  console.log('query from settings', options);
+  useVisibleTask$(({ cleanup }) => {
+    console.log('height', height);
+    console.log('BAM query', options);
+  });
   return (
-    <div class="flex flex-col">
-      <div class="pt-12 mx-6 md:mx-12">
-        <img
-          class="mx-auto logo 2xl:w-[40rem] 2xl:h-[40rem] rounded-2xl"
-          width={689}
-          height={591}
-          src="/images/bdb_logo_color_no_txt.png"
-          alt="Dogs Logo"
-        />
-      </div>
-      <Card
-        title="Order Now"
-        class="w-96 text-primary-content"
-        description="Webb Card Description"
-        variant={{
-          theme: 'primary',
-        }}
-        modifiers={{
-          border: true,
-        }}
-      >
-        <figure q:slot="image">
-          <Image
-            src="https://www.qwikbits.dev/images/qwikbits/crab-nebula-webb.jpg"
-            alt="webb"
-            width={500}
-            height={436}
-          ></Image>
-        </figure>
-      </Card>
+    <div>
+      <Background
+        xMax={options?.xMax || 400}
+        yMax={options?.yMax || 400}
+        blank={options?.blank}
+      />
+      <VHElement class="relative z-10 bg-transparent" data-theme="bdb">
+        <section></section>
+      </VHElement>
     </div>
   );
 });
@@ -48,3 +41,18 @@ export const head: DocumentHead = {
     },
   ],
 };
+
+export const onRequest: RequestHandler = ({ sharedMap, query }) => {
+  query.forEach((v, k) => sharedMap.set(k, v));
+};
+
+export const useSettings = routeLoader$(({ sharedMap }) => {
+  const obj: Record<string, string> = {};
+  sharedMap.forEach((v, k) => {
+    console.log({ k, v });
+    if (v && typeof v === 'string' && v.includes('json')) {
+      obj[k] = superjson.parse(v);
+    }
+  });
+  return obj as unknown as { options: BackgroundProps };
+});

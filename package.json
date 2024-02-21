@@ -14,7 +14,8 @@
     "@qwikbits/daisyui": "^0.7.5",
     "@qwikbits/utils": "^0.7.2",
     "html-to-image": "^1.11.11",
-    "qwik-nx": "2.0.2"
+    "qwik-nx": "2.0.2",
+    "superjson": "^2.2.1"
   },
   "devDependencies": {
     "@builder.io/qwik": "~1.2.17",
