@@ -11,6 +11,7 @@ module.exports = {
     "plugin:qwik/recommended",
   ],
   parser: "@typescript-eslint/parser",
+  ignorePatterns: ["**.config.js", "**.config.cjs"],
   parserOptions: {
     tsconfigRootDir: __dirname,
     project: ["./tsconfig.json"],
