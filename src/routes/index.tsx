@@ -1,29 +1,22 @@
-import { component$, useVisibleTask$ } from '@builder.io/qwik';
+import { component$} from '@builder.io/qwik';
 import {
   routeLoader$,
   type DocumentHead,
   type RequestHandler,
 } from '@builder.io/qwik-city';
-import { VHElement, use100vh } from '@qwikbits/utils';
+import { VHElement } from '@qwikbits/utils';
 import Background, { type BackgroundProps } from '../components/background';
-import Testcomp from '../components/testcomp';
 import superjson from 'superjson';
 export default component$(() => {
   const query = useSettings();
   const options = query.value.options;
 
-  const height = use100vh();
-  console.log('query from settings', options);
-  useVisibleTask$(({ cleanup }) => {
-    console.log('height', height);
-    console.log('BAM query', options);
-  });
   return (
     <div>
       <Background
-        xMax={options?.xMax || 400}
-        yMax={options?.yMax || 400}
-        blank={options?.blank}
+        xMax={options.xMax || 400}
+        yMax={options.yMax || 400}
+        blank={options.blank}
       />
       <VHElement class="relative z-10 bg-transparent" data-theme="bdb">
         <section></section>

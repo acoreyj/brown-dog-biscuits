@@ -1,9 +1,9 @@
+import type {
+  QwikIntrinsicElements} from '@builder.io/qwik';
 import {
   Fragment,
-  QwikIntrinsicElements,
   component$,
   useTask$,
-  $,
   useStore,
 } from '@builder.io/qwik';
 import { VHElement } from '@qwikbits/utils';
@@ -82,14 +82,8 @@ export default component$((props: BackgroundProps) => {
   const {
     xMax,
     yMax,
-    xStart,
-    yStart,
-    rotations,
-    icons,
-    textColors,
     padding,
     blank,
-    flippableIcons,
   } = props;
 
   const generateIconPositions = (options?: {
