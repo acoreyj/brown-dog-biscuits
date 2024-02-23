@@ -43,7 +43,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"jszip": "^3.10.1",
+		"cva": "1.0.0-beta.1",
 		"superjson": "^2.2.1"
 	}
 }
