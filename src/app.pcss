@@ -1,0 +1,60 @@
+/* Write your global styles here, in PostCSS syntax */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+	font-family: 'sheila crayon';
+	src: url('/fonts/sheila-crayon-font/sheilacrayon-1vwg.ttf') format('truetype-variations');
+	font-weight: 400 400; /* range depending on the font */
+}
+@supports not (color: oklch(0 0 0)) {
+	:root {
+		color-scheme: light;
+		--fallback-p: #9a5124;
+		--fallback-pc: #ecdbd2;
+		--fallback-s: #603913;
+		--fallback-sc: #ded4cd;
+		--fallback-a: #4b2e12;
+		--fallback-ac: #d9d1cb;
+		--fallback-n: #fef8ea;
+		--fallback-nc: #161513;
+		--fallback-b1: #fee8d0;
+		--fallback-b2: #f7c698;
+		--fallback-b3: #c19b77;
+		--fallback-bc: #161310;
+		--fallback-in: #130803;
+		--fallback-inc: #cac6c4;
+		--fallback-su: #fca361;
+		--fallback-suc: #160a03;
+		--fallback-wa: #ff9600;
+		--fallback-wac: #160800;
+		--fallback-er: #934441;
+		--fallback-erc: #ebd8d6;
+	}
+	@media (prefers-color-scheme: dark) {
+		:root {
+			color-scheme: dark;
+
+			--fallback-p: #9a5124;
+			--fallback-pc: #ecdbd2;
+			--fallback-s: #603913;
+			--fallback-sc: #ded4cd;
+			--fallback-a: #4b2e12;
+			--fallback-ac: #d9d1cb;
+			--fallback-n: #fef8ea;
+			--fallback-nc: #161513;
+			--fallback-b1: #fee8d0;
+			--fallback-b2: #f7c698;
+			--fallback-b3: #c19b77;
+			--fallback-bc: #161310;
+			--fallback-in: #130803;
+			--fallback-inc: #cac6c4;
+			--fallback-su: #fca361;
+			--fallback-suc: #160a03;
+			--fallback-wa: #ff9600;
+			--fallback-wac: #160800;
+			--fallback-er: #934441;
+			--fallback-erc: #ebd8d6;
+		}
+	}
+}
