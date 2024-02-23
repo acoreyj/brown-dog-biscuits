@@ -25,7 +25,7 @@
 	export type Props = {
 		variant?: VariantProps<typeof cvaFn>;
 		modifiers?: Record<string, boolean>;
-	} & HTMLAnchorElement;
+	} & Partial<HTMLAnchorElement>;
 </script>
 
 <script lang="ts">

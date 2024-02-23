@@ -19,8 +19,9 @@
 	};
 	const cvaFn = cva(config);
 	export type MenuItemProps = {
+		href: string;
 		label: string;
-	} & LinkProps;
+	} & Partial<LinkProps>;
 
 	export type Props = {
 		variant?: VariantProps<typeof cvaFn>;
@@ -32,7 +33,7 @@
 
 <script lang="ts">
 	export let variant: Props['variant'];
-	export let title: string;
+	export let title = '';
 	export let hasTitle: boolean = false;
 	export let items: MenuItemProps[] = [];
 	let cls = '';

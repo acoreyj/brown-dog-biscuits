@@ -7,6 +7,7 @@
 	<meta name="description" content="Fresh made dog treats" />
 </svelte:head>
 
-<section>
+<section class="relative h-full">
 	<Background />
+	<div class="z-10"></div>
 </section>
