@@ -20,117 +20,22 @@
 		flippableIcons?: string[];
 		rotateableIcons?: string[];
 	};
-
-	function getMaxWidth(innerWidth: number) {
-		const breakpoint = getBreakpoint(innerWidth);
-		switch (breakpoint) {
-			case 'xs':
-			case 'sm':
-				return 4;
-			case 'md':
-				return 5;
-			case 'lg':
-				return 7;
-			case 'xl':
-			case '2xl':
-				return 9;
-		}
-	}
 </script>
 
 <script lang="ts">
-	import SuperJSON from 'superjson';
-
-	import { debounce, getBreakpoint } from './daisyui/utils';
-
-	$: innerWidth = 0;
-	$: innerHeight = 0;
-	$: updateOptions = false;
-
-	$: debouncedInnerWidth = 0;
-
-	let logo: HTMLImageElement;
-	let rect: DOMRect;
-	let roundedRect: Background['blank'] = undefined;
-
-	const setWindowWidth = () => {
-		console.log('changed', { innerWidth, rect, debouncedInnerWidth });
-		debouncedInnerWidth = innerWidth;
-		if (rect && roundedRect) {
-			rect = logo.getBoundingClientRect();
-			roundedRect = {
-				top: Math.round(rect.top - (document.querySelector('header')?.clientHeight ?? 0)),
-				left: Math.round(rect.left),
-				width: Math.round(rect.width),
-				height: Math.round(rect.height)
-			};
-		}
-		updateOptions = true;
-	};
-
-	const debouncedSetWindowWidth = debounce(setWindowWidth, 300);
-
-	$: {
-		if (!debouncedInnerWidth && innerWidth) {
-			setWindowWidth();
-		} else if (innerWidth && innerWidth !== debouncedInnerWidth) {
-			debouncedSetWindowWidth();
-		}
-	}
-	$: {
-		if (logo) {
-			rect = logo.getBoundingClientRect();
-		}
-	}
-	$: roundedRect = rect
-		? {
-				top: Math.round(rect.top - (document.querySelector('header')?.clientHeight ?? 0)),
-				left: Math.round(rect.left),
-				width: Math.round(rect.width),
-				height: Math.round(rect.height)
-			}
-		: undefined;
-	let options: Background | undefined = undefined;
-	$: {
-		if (roundedRect && updateOptions) {
-			updateOptions = false;
-			options = {
-				xMax: debouncedInnerWidth,
-				yMax: innerHeight * 2,
-				maxWidth: getMaxWidth(debouncedInnerWidth),
-				blank: {
-					circle: true,
-					padding: 0,
-					...roundedRect
-				}
-			};
-		}
-	}
-	$: stringified = options ? SuperJSON.stringify(options) : undefined;
-	$: iconsBgPath = stringified
-		? `https://icon-bg-worker.geniecode.workers.dev/?url=https://icon-background.pages.dev/?options=${stringified}`
-		: undefined;
 </script>
 
-<svelte:window bind:innerWidth bind:innerHeight />
 <div class="absolute z-0 flex h-full w-full justify-center">
-	{#if iconsBgPath}
-		<div class="absolute z-0 h-full w-full" style="background-image: url('{iconsBgPath}')" />
-	{/if}
-	<div class="absolute z-10 pt-12">
+	<div class="icon-bg absolute z-0 h-full w-full" />
+	<div class="absolute z-10 pt-14 md:pt-20">
 		<img
-			class="logo w-60 object-contain"
+			class="logo w-60 object-contain sm:w-80 md:w-96 lg:w-[30rem] xl:w-[36rem] 2xl:w-[40rem]"
 			src="/images/bdb_logo_color_no_txt.png"
 			alt="Brown Dog Biscuits Logo"
-			bind:this={logo}
 		/>
 	</div>
 </div>
 
-<div class="relative z-20">
-	Image Path:
-	<pre>{iconsBgPath}</pre>
-</div>
 <!-- <div class="relative z-10">
 	<p>
 		Inner Width: {innerWidth}
@@ -157,3 +62,36 @@
 		<pre>{stringified}</pre>
 	</div>
 </div> -->
+
+<style>
+	.icon-bg {
+		background-position: top center;
+		background-image: url('https://icon-bg-worker.geniecode.workers.dev/?url=https://icon-background.pages.dev/?options={%22json%22:{%22xMax%22:640,%22yMax%22:1600,%22maxWidth%22:3,%22blank%22:{%22ellipse%22:true,%22padding%22:0,%22top%22:56,%22left%22:200,%22width%22:240,%22height%22:206}}}');
+	}
+
+	@media (min-width: 640px) {
+		.icon-bg {
+			background-image: url('https://icon-bg-worker.geniecode.workers.dev/?url=https://icon-background.pages.dev/?options={%22json%22:{%22xMax%22:768,%22yMax%22:1800,%22maxWidth%22:4,%22blank%22:{%22ellipse%22:true,%22padding%22:0,%22top%22:56,%22left%22:224,%22width%22:320,%22height%22:275}}}');
+		}
+	}
+	@media (min-width: 768px) {
+		.icon-bg {
+			background-image: url('https://icon-bg-worker.geniecode.workers.dev/?url=https://icon-background.pages.dev/?options={%22json%22:{%22xMax%22:1024,%22yMax%22:1800,%22maxWidth%22:5,%22blank%22:{%22ellipse%22:true,%22padding%22:0,%22top%22:80,%22left%22:320,%22width%22:384,%22height%22:330}}}');
+		}
+	}
+	@media (min-width: 1024px) {
+		.icon-bg {
+			background-image: url('https://icon-bg-worker.geniecode.workers.dev/?url=https://icon-background.pages.dev/?options={%22json%22:{%22xMax%22:1280,%22yMax%22:1800,%22maxWidth%22:7,%22blank%22:{%22ellipse%22:true,%22padding%22:0,%22top%22:80,%22left%22:400,%22width%22:480,%22height%22:412}}}');
+		}
+	}
+	@media (min-width: 1280px) {
+		.icon-bg {
+			background-image: url('https://icon-bg-worker.geniecode.workers.dev/?url=https://icon-background.pages.dev/?options={%22json%22:{%22xMax%22:1536,%22yMax%22:1800,%22maxWidth%22:8,%22blank%22:{%22ellipse%22:true,%22padding%22:0,%22top%22:80,%22left%22:480,%22width%22:576,%22height%22:494}}}');
+		}
+	}
+	@media (min-width: 1536px) {
+		.icon-bg {
+			background-image: url('https://icon-bg-worker.geniecode.workers.dev/?url=https://icon-background.pages.dev/?options={%22json%22:{%22xMax%22:1670,%22yMax%22:1852,%22maxWidth%22:9,%22blank%22:{%22ellipse%22:true,%22padding%22:0,%22top%22:48,%22left%22:515,%22width%22:640,%22height%22:549}}}');
+		}
+	}
+</style>
