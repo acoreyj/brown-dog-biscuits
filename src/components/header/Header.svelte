@@ -55,3 +55,11 @@
 		<Menu variant={{ orientation: 'horizontal' }} class="p-0" items={menuItems} />
 	</Navbar>
 </header>
+
+<style>
+	header {
+		position: sticky;
+		top: 0;
+		z-index: 10;
+	}
+</style>

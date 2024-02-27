@@ -25,14 +25,16 @@
 <script lang="ts">
 </script>
 
-<div class="absolute z-0 flex h-full w-full justify-center overflow-visible">
-	<div class="icon-bg absolute z-0 h-full w-full overflow-visible" />
-	<div class="absolute z-10 pt-14 md:pt-20">
-		<img
-			class="logo w-60 object-contain sm:w-80 md:w-96 lg:w-[30rem] xl:w-[36rem] 2xl:w-[40rem]"
-			src="/images/bdb_logo_color_no_txt.png"
-			alt="Brown Dog Biscuits Logo"
-		/>
+<div class="absolute z-0 flex w-full justify-center overflow-visible">
+	<div class="icon-bg absolute z-0 min-h-[100vh] w-full overflow-visible">
+		<div class="z-10 pt-14 md:pt-20">
+			<img
+				class="logo mx-auto w-60 object-contain sm:w-80 md:w-96 lg:w-[30rem] xl:w-[36rem] 2xl:w-[40rem]"
+				src="/images/bdb_logo_color_no_txt.png"
+				alt="Brown Dog Biscuits Logo"
+			/>
+			<slot />
+		</div>
 	</div>
 </div>
 

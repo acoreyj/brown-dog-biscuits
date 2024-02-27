@@ -8,9 +8,14 @@
 	<meta name="description" content="Fresh made dog treats" />
 </svelte:head>
 
-<section class="relative h-full">
-	<Background />
-	<div class="relative top-[44rem] z-10">
-		<Card title="Brown Dog Biscuits" variant={{ theme: 'primary' }}>Fresh made</Card>
-	</div>
+<section class="relative">
+	<Background>
+		<div
+			class="z-10 flex w-full justify-center gap-4 bg-transparent px-4 py-4 lg:gap-6 lg:px-6 lg:py-6"
+		>
+			<Card title="Brown Dog Biscuits" class="w-36 md:w-96" variant={{ theme: 'primary' }}
+				>Fresh made</Card
+			>
+		</div>
+	</Background>
 </section>
