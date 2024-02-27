@@ -25,8 +25,8 @@
 <script lang="ts">
 </script>
 
-<div class="absolute z-0 flex h-full w-full justify-center">
-	<div class="icon-bg absolute z-0 h-full w-full" />
+<div class="absolute z-0 flex h-full w-full justify-center overflow-visible">
+	<div class="icon-bg absolute z-0 h-full w-full overflow-visible" />
 	<div class="absolute z-10 pt-14 md:pt-20">
 		<img
 			class="logo w-60 object-contain sm:w-80 md:w-96 lg:w-[30rem] xl:w-[36rem] 2xl:w-[40rem]"

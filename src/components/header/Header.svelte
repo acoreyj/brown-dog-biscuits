@@ -34,15 +34,15 @@
 
 <header class="flex w-full flex-col">
 	<Navbar
-		class="min-h[3rem] navbar border-b border-info bg-secondary px-8 text-secondary-content md:px-16"
+		class="min-h[3rem] navbar border-b border-info bg-secondary px-2 text-secondary-content md:px-16 lg:px-8"
 	>
 		<div class="navbar-start"></div>
-		<div class="navbar-center flex items-center gap-6">
-			<span class="text-4xl text-error">
+		<div class="navbar-center flex items-center gap-2 lg:gap-6">
+			<span class="text-xl text-error lg:text-4xl">
 				<TwoToneHeart />
 			</span>
-			<span class="translate-y-1 font-sheila_crayon text-4xl">BROWN DOG BISCUITS</span>
-			<span class="text-4xl text-error">
+			<span class="translate-y-1 font-sheila_crayon text-xl lg:text-4xl">BROWN DOG BISCUITS</span>
+			<span class="text-xl text-error lg:text-4xl">
 				<TwoToneHeart />
 			</span>
 		</div>

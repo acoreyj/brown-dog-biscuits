@@ -72,8 +72,9 @@
 		<slot name="body-start" />
 		<slot name="title" />
 		<h2 class="card-title">{title}</h2>
-		<slot name="description" />
+		<slot />
 		<p>{description}</p>
+		<slot name="description" />
 		<div class="card-actions justify-end">
 			<slot name="actions" />
 		</div>
