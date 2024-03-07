@@ -1,6 +1,11 @@
 <script lang="ts">
 	import Background from '$components/Background.svelte';
+	import Button from '$components/daisyui/Button.svelte';
 	import Card from '$components/daisyui/Card.svelte';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
+	const features = data.features || [];
 </script>
 
 <svelte:head>
@@ -13,9 +18,24 @@
 		<div
 			class="z-10 flex w-full justify-center gap-4 bg-transparent px-4 py-4 lg:gap-6 lg:px-6 lg:py-6"
 		>
-			<Card title="Brown Dog Biscuits" class="w-36 md:w-96" variant={{ theme: 'primary' }}
-				>Fresh made</Card
-			>
+			{#each features as feature}
+				<Card
+					image={{
+						src: `https://content.browndogbiscuits.shop${feature.image}`,
+						alt: feature.title
+					}}
+					title={feature.title}
+					class="w-36 md:w-96"
+					variant={{ theme: 'primary' }}
+				>
+					{feature.body}
+					{#if feature.link}
+						<Button slot="actions" class="btn-primary" href={feature.href}
+							>{feature.linkText || 'Learn More'}</Button
+						>
+					{/if}
+				</Card>
+			{/each}
 		</div>
 	</Background>
 </section>

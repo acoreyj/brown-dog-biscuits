@@ -43,8 +43,8 @@
 	export type Image = {
 		src: string;
 		alt: string;
-		width: number;
-		height: number;
+		width?: number;
+		height?: number;
 	};
 </script>
 
@@ -75,9 +75,11 @@
 		<slot />
 		<p>{description}</p>
 		<slot name="description" />
-		<div class="card-actions justify-end">
-			<slot name="actions" />
-		</div>
+		{#if $$slots.actions}
+			<div class="card-actions justify-end">
+				<slot name="actions" />
+			</div>
+		{/if}
 		<slot name="body-end" />
 	</div>
 	<slot name="image-end" />
