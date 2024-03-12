@@ -3,6 +3,7 @@
 	import { cva, cx } from 'cva';
 	import type { VariantProps } from 'cva';
 	import { getModifiersClasses } from './utils';
+	import GenieImage from '$components/GenieImage.svelte';
 	type cardElProps = HTMLDivElement;
 	export const config = {
 		base: 'card',
@@ -45,6 +46,7 @@
 		alt: string;
 		width?: number;
 		height?: number;
+		sizes?: string;
 	};
 </script>
 
@@ -65,7 +67,7 @@
 	<slot name="image" />
 	{#if image}
 		<figure>
-			<img width={image.width} height={image.height} src={image.src} alt={image.alt} />
+			<GenieImage {...image} />
 		</figure>
 	{/if}
 	<div class="card-body">

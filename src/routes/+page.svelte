@@ -21,7 +21,8 @@
 			{#each features as feature}
 				<Card
 					image={{
-						src: `https://content.browndogbiscuits.shop${feature.image}`,
+						sizes: '(min-width: 768px) 384px, 144px',
+						src: `https://browndogbiscuits.shop${feature.image}`,
 						alt: feature.title
 					}}
 					title={feature.title}
