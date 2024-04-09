@@ -19,8 +19,7 @@ export const load: PageServerLoad = async ({ platform }) => {
 		const graphQLClient = new GraphQLClient(
 			platform?.env.GRAPHQL_API_URL || 'https://content.browndogbiscuits.shop/graphql',
 			{
-				credentials: `include`,
-				mode: `cors`
+				fetch: fetch,
 			}
 		);
 		const data = await graphQLClient.request(getProductsQuery);

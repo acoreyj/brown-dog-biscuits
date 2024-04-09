@@ -1,6 +1,6 @@
 import { graphql } from 'gql.tada';
 import type { PageServerLoad } from './$types';
-import request from 'graphql-request';
+import { GraphQLClient } from 'graphql-request';
 const getFeaturesQuery = graphql(`
 	query Features {
 		features {
@@ -15,7 +15,13 @@ const getFeaturesQuery = graphql(`
 `);
 export const load: PageServerLoad = async ({ platform }) => {
 	try {
-		const features = await request(
+		const graphQLClient = new GraphQLClient(
+			platform?.env.GRAPHQL_API_URL || 'https://content.browndogbiscuits.shop/graphql',
+			{
+				fetch: fetch
+			}
+		);
+		const features = await graphQLClient.request(
 			platform?.env.GRAPHQL_API_URL || 'https://content.browndogbiscuits.shop/graphql',
 			getFeaturesQuery
 		);
