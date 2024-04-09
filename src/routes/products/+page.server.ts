@@ -1,6 +1,6 @@
 import { graphql } from 'gql.tada';
 import type { PageServerLoad } from './$types';
-import request from 'graphql-request';
+import { GraphQLClient } from 'graphql-request';
 const getProductsQuery = graphql(`
 	query Products {
 		products {
@@ -16,10 +16,14 @@ const getProductsQuery = graphql(`
 `);
 export const load: PageServerLoad = async ({ platform }) => {
 	try {
-		const data = await request(
+		const graphQLClient = new GraphQLClient(
 			platform?.env.GRAPHQL_API_URL || 'https://content.browndogbiscuits.shop/graphql',
-			getProductsQuery
+			{
+				credentials: `include`,
+				mode: `cors`
+			}
 		);
+		const data = await graphQLClient.request(getProductsQuery);
 		if (data?.products) {
 			return {
 				products: data.products
