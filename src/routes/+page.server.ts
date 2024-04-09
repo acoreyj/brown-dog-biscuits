@@ -21,10 +21,7 @@ export const load: PageServerLoad = async ({ platform }) => {
 				fetch: fetch
 			}
 		);
-		const features = await graphQLClient.request(
-			platform?.env.GRAPHQL_API_URL || 'https://content.browndogbiscuits.shop/graphql',
-			getFeaturesQuery
-		);
+		const features = await graphQLClient.request(getFeaturesQuery);
 		if (features?.features) {
 			return {
 				features: features.features
