@@ -26,6 +26,7 @@ export const load: PageServerLoad = async ({ platform }) => {
 		}
 	} catch (e) {
 		console.error(e);
+		throw e;
 	}
 
 	return {
