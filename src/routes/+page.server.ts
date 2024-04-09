@@ -24,9 +24,9 @@ export const load: PageServerLoad = async ({ platform }) => {
 				features: features.features
 			};
 		}
-	} catch (e) {
+	} catch (e: unknown) {
 		console.error(e);
-		throw e;
+		console.error((e as Error).stack || '');
 	}
 
 	return {
