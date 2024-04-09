@@ -28,11 +28,6 @@
 <div class="absolute z-0 flex w-full justify-center overflow-visible">
 	<div class="icon-bg absolute z-0 min-h-[100vh] w-full overflow-visible">
 		<div class="z-10 pt-14 md:pt-20">
-			<img
-				class="logo mx-auto w-60 object-contain sm:w-80 md:w-96 lg:w-[30rem] xl:w-[36rem] 2xl:w-[40rem]"
-				src="/images/bdb_logo_color_no_txt.png"
-				alt="Brown Dog Biscuits Logo"
-			/>
 			<slot />
 		</div>
 	</div>
@@ -68,32 +63,45 @@
 <style>
 	.icon-bg {
 		background-position: top center;
-		background-image: url('https://icon-bg-worker.geniecode.workers.dev/?url=https://icon-background.pages.dev/?options={%22json%22:{%22xMax%22:640,%22yMax%22:1600,%22maxWidth%22:3,%22blank%22:{%22ellipse%22:true,%22padding%22:0,%22top%22:56,%22left%22:200,%22width%22:240,%22height%22:206}}}');
+		/* background-image: url('https://icon-bg-worker.geniecode.workers.dev/?url=https://icon-background.pages.dev/?options={%22json%22:{%22xMax%22:640,%22yMax%22:1600,%22maxWidth%22:3}}'); */
+		background-image: url('/images/background/small.jpeg');
 	}
 
 	@media (min-width: 640px) {
 		.icon-bg {
-			background-image: url('https://icon-bg-worker.geniecode.workers.dev/?url=https://icon-background.pages.dev/?options={%22json%22:{%22xMax%22:768,%22yMax%22:1800,%22maxWidth%22:4,%22blank%22:{%22ellipse%22:true,%22padding%22:0,%22top%22:56,%22left%22:224,%22width%22:320,%22height%22:275}}}');
+			/* background-image: url('https://icon-bg-worker.geniecode.workers.dev/?url=https://icon-background.pages.dev/?options={%22json%22:{%22xMax%22:768,%22yMax%22:1800,%22maxWidth%22:4}}'); */
+			background-image: url('/images/background/640.jpeg');
 		}
 	}
 	@media (min-width: 768px) {
 		.icon-bg {
-			background-image: url('https://icon-bg-worker.geniecode.workers.dev/?url=https://icon-background.pages.dev/?options={%22json%22:{%22xMax%22:1024,%22yMax%22:1800,%22maxWidth%22:5,%22blank%22:{%22ellipse%22:true,%22padding%22:0,%22top%22:80,%22left%22:320,%22width%22:384,%22height%22:330}}}');
+			/* background-image: url('https://icon-bg-worker.geniecode.workers.dev/?url=https://icon-background.pages.dev/?options={%22json%22:{%22xMax%22:1024,%22yMax%22:1800,%22maxWidth%22:5}}'); */
+			background-image: url('/images/background/768.jpeg');
 		}
 	}
 	@media (min-width: 1024px) {
 		.icon-bg {
-			background-image: url('https://icon-bg-worker.geniecode.workers.dev/?url=https://icon-background.pages.dev/?options={%22json%22:{%22xMax%22:1280,%22yMax%22:1800,%22maxWidth%22:7,%22blank%22:{%22ellipse%22:true,%22padding%22:0,%22top%22:80,%22left%22:400,%22width%22:480,%22height%22:412}}}');
+			/* background-image: url('https://icon-bg-worker.geniecode.workers.dev/?url=https://icon-background.pages.dev/?options={%22json%22:{%22xMax%22:1280,%22yMax%22:1800,%22maxWidth%22:7}}'); */
+			background-image: url('/images/background/1024.jpeg');
 		}
 	}
 	@media (min-width: 1280px) {
 		.icon-bg {
-			background-image: url('https://icon-bg-worker.geniecode.workers.dev/?url=https://icon-background.pages.dev/?options={%22json%22:{%22xMax%22:1536,%22yMax%22:1800,%22maxWidth%22:8,%22blank%22:{%22ellipse%22:true,%22padding%22:0,%22top%22:80,%22left%22:480,%22width%22:576,%22height%22:494}}}');
+			/* background-image: url('https://icon-bg-worker.geniecode.workers.dev/?url=https://icon-background.pages.dev/?options={%22json%22:{%22xMax%22:1536,%22yMax%22:1800,%22maxWidth%22:8}}'); */
+			background-image: url('/images/background/1280.jpeg');
 		}
 	}
 	@media (min-width: 1536px) {
 		.icon-bg {
-			background-image: url('https://icon-bg-worker.geniecode.workers.dev/?url=https://icon-background.pages.dev/?options={%22json%22:{%22xMax%22:1670,%22yMax%22:1852,%22maxWidth%22:9,%22blank%22:{%22ellipse%22:true,%22padding%22:0,%22top%22:48,%22left%22:515,%22width%22:640,%22height%22:549}}}');
+			/* background-image: url('https://icon-bg-worker.geniecode.workers.dev/?url=https://icon-background.pages.dev/?options={%22json%22:{%22xMax%22:1670,%22yMax%22:1852,%22maxWidth%22:9}}'); */
+			background-image: url('/images/background/1536.jpeg');
+		}
+	}
+
+	@media (min-width: 2560px) {
+		.icon-bg {
+			/* background-image: url('https://icon-bg-worker.geniecode.workers.dev/?url=https://icon-background.pages.dev/?options={%22json%22:{%22xMax%22:3840,%22yMax%22:2160,%22maxWidth%22:9}}'); */
+			background-image: url('/images/background/2560.jpeg');
 		}
 	}
 </style>

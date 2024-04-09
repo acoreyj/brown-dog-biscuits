@@ -12,7 +12,7 @@
 		{
 			href: '/',
 			label: 'Home',
-			class: `px-1 py-0 m-0 text-lg font-bold ${
+			class: `px-4 py-1 m-0 text-lg font-bold ${
 				$page.url.pathname === '/' ? activeClass : inactiveClass
 			}`,
 			modifiers: {
@@ -22,7 +22,7 @@
 		{
 			href: '/products',
 			label: 'Products',
-			class: `px-1 py-0 m-0 text-lg font-bold ${
+			class: `px-4 py-1 m-0 text-lg font-bold ${
 				$page.url.pathname === '/products' ? activeClass : inactiveClass
 			}`,
 			modifiers: {

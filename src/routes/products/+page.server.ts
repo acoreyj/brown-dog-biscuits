@@ -1,27 +1,28 @@
 import { graphql } from 'gql.tada';
 import type { PageServerLoad } from './$types';
 import request from 'graphql-request';
-const getFeaturesQuery = graphql(`
-	query Features {
-		features {
+const getProductsQuery = graphql(`
+	query Products {
+		products {
 			id
-			title
-			body
-			link
-			image
-			linkText
+			name
+			description
+			images
+			skus {
+				id
+			}
 		}
 	}
 `);
 export const load: PageServerLoad = async ({ platform }) => {
 	try {
-		const features = await request(
+		const data = await request(
 			platform?.env.GRAPHQL_API_URL || 'https://content.browndogbiscuits.shop/graphql',
-			getFeaturesQuery
+			getProductsQuery
 		);
-		if (features?.features) {
+		if (data?.products) {
 			return {
-				features: features.features
+				products: data.products
 			};
 		}
 	} catch (e) {

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Background from '$components/Background.svelte';
+	import Background from '$components/HomeBackground.svelte';
 	import Button from '$components/daisyui/Button.svelte';
 	import Card from '$components/daisyui/Card.svelte';
 	import type { PageData } from './$types';
@@ -21,18 +21,18 @@
 			{#each features as feature}
 				<Card
 					image={{
-						sizes: '(min-width: 768px) 384px, 144px',
+						sizes: '384px',
 						src: `https://browndogbiscuits.shop${feature.image}`,
-						alt: feature.title
+						alt: feature.title || 'Featured item'
 					}}
-					title={feature.title}
-					class="w-36 md:w-96"
+					title={feature.title || 'Featured item'}
+					class="w-96 max-w-[90vw]"
 					variant={{ theme: 'primary' }}
 				>
 					{feature.body}
 					{#if feature.link}
-						<Button slot="actions" class="btn-primary" href={feature.href}
-							>{feature.linkText || 'Learn More'}</Button
+						<Button slot="actions" class="mt-4" href={feature.link}
+							>{feature.linkText || 'See our products'}</Button
 						>
 					{/if}
 				</Card>
